@@ -8,12 +8,25 @@ class LinkedList:
         self.head = None
 
     def prepend(self, data):
-        """Adding node before already existing node from lhs.
-        Complexity is O(n)."""
+        """Adding node at the start of LinkedList.
+        Complexity is O(1)."""
         self.head = Node(data, self.head)
 
     def append(self, data):
-        pass
+        """Traverses throught the LinkedList and
+        adds node at the end of LinkedList.
+        Complexity is O(n)"""
+        if self.head is None:
+            self.head = Node(data, self.head)
+            return
+        current_node = self.head
+        prev_node = None
+        while current_node:
+            prev_node = current_node
+            current_node = current_node.next
+        current_node = Node(data, current_node)
+        prev_node.next = current_node
+
 
     def insert(self, data, index):
         pass
@@ -38,3 +51,8 @@ ll = LinkedList()
 ll.prepend(10)
 ll.prepend(20)
 print(ll)
+
+ll1 = LinkedList()
+ll1.append(10)
+ll1.append(20)
+print(ll1)
