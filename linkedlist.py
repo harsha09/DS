@@ -3,19 +3,22 @@ from node import Node
 class LinkedList:
     """LinkedList Data Structure."""
 
+
     def __init__(self):
-        """LinkedList initialisation. """
+        """LinkedList initialisation."""
         self.head = None
+
 
     def prepend(self, data):
         """Adding node at the start of LinkedList.
         Complexity is O(1)."""
         self.head = Node(data, self.head)
 
+
     def append(self, data):
         """Traverses throught the LinkedList and
         adds node at the end of LinkedList.
-        Complexity is O(n)"""
+        Complexity is O(n)."""
         if self.head is None:
             self.head = Node(data, self.head)
             return
@@ -29,14 +32,23 @@ class LinkedList:
 
 
     def insert(self, data, index):
+        """Insert a Node at index i. Complexity O(n)."""
         pass
 
+
     def remove(self, index):
+        """Remove a Node at index i. Complexity O(n)."""
         pass
+
+    
+    def search(self, data):
+        """Search for node. Complexity O(n)."""
+        pass
+
 
     def __str__(self):
         """String representation of Single LinkedList.
-        For Eg: 1 <- 2 <- 3. """
+        For Eg: 1 <- 2 <- 3."""
         current_node = self.head
         output = ''
         while current_node:
