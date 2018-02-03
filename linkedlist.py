@@ -7,12 +7,18 @@ class LinkedList:
     def __init__(self):
         """LinkedList initialisation."""
         self.head = None
+        self.length = 0
+
+
+    def __len__(self):
+        return self.length
 
 
     def prepend(self, data):
         """Adding node at the start of LinkedList.
         Complexity is O(1)."""
         self.head = Node(data, self.head)
+        self.length += 1
 
 
     def append(self, data):
@@ -29,11 +35,24 @@ class LinkedList:
             current_node = current_node.next
         current_node = Node(data, current_node)
         prev_node.next = current_node
+        self.length += 1
 
 
     def insert(self, data, index):
         """Insert a Node at index i. Complexity O(n)."""
-        pass
+        current_node = self.head
+        counter = 0
+        if self.length < index:
+            raise IndexError('Index out of range!!!')
+        while current_node:
+            prev_node = current_node
+            current_node = current_node.next
+            counter += 1
+            if counter == index:
+                current_node = Node(data, current_node)
+                prev_node.next = current_node
+                self.length += 1
+                return
 
 
     def remove(self, index):
@@ -71,14 +90,18 @@ ll = LinkedList()
 ll.prepend(10)
 ll.prepend(20)
 print(ll)
+ll.prepend(50)
+print(ll)
+ll.insert(100, 1)
+print(ll)
+
+print("-"*20)
 
 ll1 = LinkedList()
 ll1.append(10)
 ll1.append(20)
 ll1.append(50)
 print(ll1)
-print(ll1.search(50))
-print(ll1.search(80))
+ll1.insert(100, 1)
+print(ll1)
 
-ll2 = LinkedList()
-print(ll2.search(10))
