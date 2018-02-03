@@ -42,8 +42,16 @@ class LinkedList:
 
     
     def search(self, data):
-        """Search for node. Complexity O(n)."""
-        pass
+        """Search for node in LinkedList and return position.
+        Complexity O(n)."""
+        current_node = self.head
+        counter = 0
+        while current_node:
+            if current_node.data == data:
+                return counter
+            current_node = current_node.next
+            counter += 1
+        return -1
 
 
     def __str__(self):
@@ -67,4 +75,10 @@ print(ll)
 ll1 = LinkedList()
 ll1.append(10)
 ll1.append(20)
+ll1.append(50)
 print(ll1)
+print(ll1.search(50))
+print(ll1.search(80))
+
+ll2 = LinkedList()
+print(ll2.search(10))
