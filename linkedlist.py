@@ -38,18 +38,17 @@ class LinkedList:
     def insert(self, data, index):
         """Insert a Node at index i. Complexity O(n)."""
         current_node = self.head
-        counter = 0
+        counter = 1
+
         if self.length <= index:
             raise IndexError('Index out of range!!!')
-        while current_node:
-            prev_node = current_node
+
+        while counter < index:
             current_node = current_node.next
             counter += 1
-            if counter == index:
-                current_node = Node(data, current_node)
-                prev_node.next = current_node
-                self.length += 1
-                return
+
+        current_node.next = Node(data, current_node.next)
+        self.length += 1
 
 
     def remove(self, index):
