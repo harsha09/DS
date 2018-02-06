@@ -26,15 +26,12 @@ class LinkedList:
         adds node at the end of LinkedList.
         Complexity is O(n)."""
         if self.head is None:
-            self.head = Node(data, self.head)
+            self.prepend(data)
             return
         current_node = self.head
-        prev_node = None
-        while current_node:
-            prev_node = current_node
+        while current_node.next:
             current_node = current_node.next
-        current_node = Node(data, current_node)
-        prev_node.next = current_node
+        current_node.next = Node(data, None)
         self.length += 1
 
 
@@ -42,7 +39,7 @@ class LinkedList:
         """Insert a Node at index i. Complexity O(n)."""
         current_node = self.head
         counter = 0
-        if self.length < index:
+        if self.length <= index:
             raise IndexError('Index out of range!!!')
         while current_node:
             prev_node = current_node
@@ -103,5 +100,11 @@ ll1.append(20)
 ll1.append(50)
 print(ll1)
 ll1.insert(100, 1)
+print(ll1)
+
+print("-"*20)
+
+ll1 = LinkedList()
+ll1.insert(100, 0)
 print(ll1)
 
